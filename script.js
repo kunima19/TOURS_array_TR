@@ -237,16 +237,14 @@ function showError(message) {
 }
 
 function toggleAllCards(patternKey) {
-  const [sequenceId, startIndexText] = patternKey.split("-");
-  const startIndex = Number(startIndexText);
-
+  const [sequenceId] = patternKey.split("-");
   const sequence = sequences.find(s => s.id === sequenceId);
   if (!sequence) return;
 
   const container = document.getElementById(`sequence-${patternKey}`);
   if (!container) return;
 
-  const allCards = sequence.cards.slice(startIndex, 100);
+  const allCards = sequence.cards.slice(0, 100);
 
   container.innerHTML = allCards.map((card, index) =>
     createCard(
@@ -254,7 +252,16 @@ function toggleAllCards(patternKey) {
       Array.isArray(card)
         ? card.some(candidate => enteredCards.includes(candidate))
         : enteredCards.includes(card),
-      startIndex + index + 1
+      index + 1
     )
   ).join('<div class="arrow">→</div>');
+
+  const newStartIndex = findStartIndex(allCards, enteredCards);
+
+  const scrollArea = container.parentElement;
+  const targetCard = container.children[newStartIndex * 2];
+
+  if (targetCard) {
+    scrollArea.scrollLeft = targetCard.offsetLeft;
+  }
 }
