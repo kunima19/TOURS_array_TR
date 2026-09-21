@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S1弾ツアーズレア配列検索</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="app">
+    <header class="top-title">S1弾ツアーズレア配列検索</header>
+    <section class="search-panel">
+      <div class="search-heading">
+        <span>検索結果</span>
+        <strong id="patternCount">0</strong>
+      </div>
+      <div id="selectedCards" class="selected-cards">
+        <span class="empty-message"></span>
+      </div>
+      <div class="search-input-row">
+        <input id="cardInput" type="text" maxlength="3" inputmode="numeric"
+               placeholder="カード番号 (1桁から3桁まで対応)">
+        <button id="addCardButton">追加</button>
+      </div>
+    </section>
+    <section id="results"></section>
+    <footer class="site-footer">
+      このサイトは自分の排出結果や無料で公開してくださっている方の情報をまとめたものです。<br>
+      公式情報ではないため誤りや不明な箇所がある可能性がございます。<br>
+      このサイトを作成するにあたり筐体投入以外の金銭などの支払いは一切行っておりません。
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
